@@ -25,7 +25,7 @@
 - 독거 노인분들을 위한 챗봇도 가능해 보입니다.
 ---
 ## 프로젝트 수행 절차 - 안드로이드
-- 안드로이드 스튜디오를 사용하여 앱을 구현했습니다. STT와 TTS 모두를 사용하며 버튼 하나로 작동합니다.
+- 안드로이드 스튜디오를 사용하여 앱을 구현했습니다. STT와 TTS 모두를 사용하며, 버튼 하나로 작동합니다.
 - activity_main.xml 코드
 ``` android
 <?xml version="1.0" encoding="utf-8"?>
@@ -380,34 +380,47 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-## 프로젝트 수행 절차 - 챗봇
-#### (1) 챗봇을 사용한 이유
-- 버튼이 아닌 대화를 통해 사용자에게 정보를 받아 여행지를 추천하고자 했습니다.
-- 사용자가 직접 여행지를 고르지 않아도 **맞춤형**으로 여행지를 골라주어 **색다른 여행**이 가능합니다.
-#### (2) 챗봇의 종류
-- 저는 챗봇을 크게 2가지로 나누었습니다.
-  1. 최대한 적은 대화로 사용자가 원하는 것을 이해하고 **해결**해주려는 목적을 가진 **문제 해결용 대화 시스템**
-  2. 사용자가 어떠한 주제로 말을 걸면, 시스템에 맞는 답변을 하며 **대화**를 이어나가는 **자유 주제 대화 시스템**
-- 본 프로젝트는 여행지 추천에 중점을 두었고, 간단한 인사만 가능한 챗봇을 목적으로 합니다.
-- 따라서 문제 해결용 대화 위주의 챗봇을 제작했습니다.
-#### (3) 챗봇 데이터
-- 참고할 데이터를 송영숙님 데이터에서 가져왔습니다.
+# 프로젝트 수행 절차 - 챗봇
+### (1) 챗봇을 사용한 이유
+- 음성을 통한 대화용 챗봇을 만들고자 했습니다.
+- 음성을 변환한 문장을 받아 챗봇이 답변하고, 다시 음성으로 바꾸어 사용자와 대화하게 구현했습니다.
+### (2) 챗봇의 종류
+- 본 프로젝트는 **일상 대화**에 중점을 두었고, 대화용 챗봇을 목적으로 합니다.
+- 추가로 음성으로 대화하는 챗봇입니다.
+### (3) 챗봇 데이터
+- 챗봇 데이터를 송영숙님 데이터에서 가져왔습니다.
 - https://github.com/songys/Chatbot_data
 
-#### (4) 챗봇 학습 진행
+### (4) 챗봇 학습 진행
 - 제가 사용한 모델은 transformers의 bert입니다.
 
 - 저장한 챗봇 데이터 프레임에 임베딩 값을 구한 후 코사인 유사도를 구합니다.
-<img width="100%" src="https://user-images.githubusercontent.com/84302953/165212133-f03b723b-d3e9-443d-9a0e-6c6d266dd420.png"/>
+<img width="100%" src="https://user-images.githubusercontent.com/84302953/168531538-f7e8360a-67f3-4ee5-93fb-feca2cfdb0d9.png"/>
 
-- 질문 문장을 넣으면 학습 문장 중 가장 유사한 문장을 찾아 답변합니다.
-<img width="80%" src="https://user-images.githubusercontent.com/84302953/165212338-c943ad19-318f-4ed3-bc38-e0bd1c7dbf46.png"/>
+- 질문 문장을 넣으면 데이터 프레임 중 가장 유사한 질문 문장을 찾아 답변합니다.
+<img width="80%" src="https://user-images.githubusercontent.com/84302953/168531771-3e8a6037-1623-4bdd-b616-4444064d7c7d.png"/>
 
-## 프로젝트 수행 절차 - 추천 알고리즘
-#### (1) 데이터 수집
-- [데이터는 한국 관광 데이터랩에서 가져왔으며, 필요한 추가 정보는 visit jeju사이트에서 크롤링했습니다.](https://colab.research.google.com/drive/1EzFI03uDONkWwgk0zRkL_5I8fnkUSdk8#scrollTo=54fd38cc)
-#### (2) 데이터 선정
-- 본 프로젝트에서는 사용자가 원하는 **테마**의 관광지이므로, 관광지 정보와 테마 **태그 값**이 필요합니다.
+## 프로젝트 수행 절차 - 파이어 베이스
+#### (1) 안드로이드와 연동
+- 안드로이드에서 지원하는 데이터 베이스인 파이어 베이스를 이용했습니다.
+- 연동 시 파이어 베이스에서 제공하는 자료와 안드로이드 스튜디오의 내부 코드가 달라 고생했습니다.
+- 특히 안드로이드 스튜디오의 버전이 높으면 연동이 불가합니다. 따라서 버전을 20년도 버전으로 바꿔서 진행했습니다.
+#### (2) 파이썬과 연동
+- 파이어 베이스와 연결하기 위해 라이브러리를 설치해줍니다.
+``` python
+pip3 install firebase_admin
+```
+``` python
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import db
+ 
+ #Firebase database 인증 및 앱 초기화
+cred = credentials.Certificate('chat-db.json')
+firebase_admin.initialize_app(cred,{
+    'databaseURL' : 'https://chat-db-32cde-default-rtdb.firebaseio.com/'
+})
+```
 - 따라서 크롤링 시 명소 이름, 주소, 테마를 저장합니다.
 <img width="100%" src="https://user-images.githubusercontent.com/84302953/165223874-3300f74a-3b2c-4ecc-b71e-af272a61012c.png"/>
 
@@ -438,6 +451,6 @@ public class MainActivity extends AppCompatActivity {
 - 더욱 다양한 대화가 가능한 챗봇, 실시간 날씨 정보 표시
 
 ## 출처 및 참고 사이트
-- 관광 데이터 -> [비짓 제주](https://www.visitjeju.net/kr/), [한국 관광 데이터랩](https://datalab.visitkorea.or.kr/datalab/portal/main/getMainForm.do)
 - 챗봇 -> [송영숙님 깃허브](https://github.com/songys/Chatbot_data), [BERT의 문장 임베딩(SBERT)을 이용한 한국어 챗봇](https://wikidocs.net/154530)
-- 추천 알고리즘 구현 -> [갈아먹는 머신러닝](https://yeomko.tistory.com/4?category=805638)
+- 안드로이드와 파이어 베이스 연동 -> [real-time database](https://soopeach.tistory.com/78)
+- 안드로이드 음성 변환 -> [STT](https://hanyeop.tistory.com/128)
