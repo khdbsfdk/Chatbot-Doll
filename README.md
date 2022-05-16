@@ -1,33 +1,384 @@
-# 기업 연계 프로젝트 - 안드로이드 앱을 이용한 챗봇 인형
+# 기업 연계 프로젝트 - 안드로이드 앱을 이용한 챗봇
 - 작업 인원 1명
 ---
-## 결과 사진
-<img width="100%" src="https://user-images.githubusercontent.com/84302953/165410852-5105753b-f9d8-4ba5-9532-2d4e5a329a0d.mp4"/>
-
 # 차례
 - [프로젝트 개요](https://github.com/khdbsfdk/Travel-recommendation-AI/blob/main/README.md#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EA%B0%9C%EC%9A%94)
 - [프로젝트 수행 절차](https://github.com/khdbsfdk/Travel-recommendation-AI/blob/main/README.md#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%88%98%ED%96%89-%EC%A0%88%EC%B0%A8---%EC%9B%B9)
-  - [웹](https://github.com/khdbsfdk/Travel-recommendation-AI/blob/main/README.md#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%88%98%ED%96%89-%EC%A0%88%EC%B0%A8---%EC%9B%B9)
+  - [안드로이드](https://github.com/khdbsfdk/Travel-recommendation-AI/blob/main/README.md#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%88%98%ED%96%89-%EC%A0%88%EC%B0%A8---%EC%9B%B9)
   - [챗봇](https://github.com/khdbsfdk/Travel-recommendation-AI/blob/main/README.md#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%88%98%ED%96%89-%EC%A0%88%EC%B0%A8---%EC%B1%97%EB%B4%87)
-  - [추천 알고리즘](https://github.com/khdbsfdk/Travel-recommendation-AI/blob/main/README.md#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%88%98%ED%96%89-%EC%A0%88%EC%B0%A8---%EC%B6%94%EC%B2%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98)
+  - [데이터 베이스](https://github.com/khdbsfdk/Travel-recommendation-AI/blob/main/README.md#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%88%98%ED%96%89-%EC%A0%88%EC%B0%A8---%EC%B6%94%EC%B2%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98)
 - [참고 사이트](https://github.com/khdbsfdk/Travel-recommendation-AI/blob/main/README.md#%EC%B6%9C%EC%B2%98-%EB%B0%8F-%EC%B0%B8%EA%B3%A0-%EC%82%AC%EC%9D%B4%ED%8A%B8)
 ---
-## 프로젝트 개요
-#### (1)프로젝트 선정 및 선정 배경
-- 보통 여행지 추천은 키워드로 추천하지만 본 프로젝트는 사용자의 요구를 대화로 받아 절차를 간소화하고 더 쉽게 여행지를 추천합니다.
-#### (2)프로젝트 구현 내용
-- 추천 알고리즘 -> 기계학습, 알고리즘 처리
+# 프로젝트 개요
+### (1)프로젝트 구현 내용
+- 플랫폼 -> 안드로이드 앱 구현
 - 챗봇 -> 자연어 처리
-#### (3)프로젝트 의의
-- 지금까지 받은 교육에서는 단순히 데이터 분석 및 모델 개발만 배웠다면 프로젝트를 통해 데이터 수집 및 전처리 능력을 더욱 향상 시킬 수 있습니다.
-#### (4)개발 환경
+### (2)프로젝트 의의
+- 컴퓨터 이외의 환경에서 챗봇을 사용할 수 있습니다.
+- 안드로이드 앱과 데이터 베이스 설계 능력 또한 키울 수 있습니다.
+### (3)개발 환경
 - 코랩 or 주피터 노트북
-#### (5)기대 효과
-- 사용자가 직접 여행지를 고르지 않아도 여행지를 골라주어 편합니다. 또한, 사용자의 니즈가 잘 반영된다면 여행 만족도 상승 및 색다른 여행을 기대할 수 있습니다.
+- 안드로이드 스튜디오 ide-201.6953283-windows
+- 파이어 베이스(DB)
+### (4)기대 효과
+- 앱 설치로 인해 접근성이 쉬우며, 채팅이 아닌 음성으로 대화를 하기 때문에 손이 자유롭습니다.
+- 독거 노인분들을 위한 챗봇도 가능해 보입니다.
 ---
-## 프로젝트 수행 절차 - 웹
-- 웹은 플라스크로 구현하여 했으나 실패했습니다.
-- 따라서 tkinter로 대체했습니다.
+## 프로젝트 수행 절차 - 안드로이드
+- 안드로이드 스튜디오를 사용하여 앱을 구현했습니다. STT와 TTS 모두를 사용하며 버튼 하나로 작동합니다.
+- activity_main.xml 코드
+``` android
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".MainActivity">
+
+<TextView
+    android:id="@+id/textView3"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:gravity="center"
+    android:text="챗봇 인형"
+    android:textColor="@color/black"
+    android:textSize="30dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    tools:ignore="MissingConstraints" />
+
+<Button
+    android:id="@+id/btn_stt_start"
+    android:layout_width="206dp"
+    android:layout_height="59dp"
+    android:backgroundTint="#0780E1"
+    android:text="음성 인식"
+    android:textSize="20dp"
+    app:icon="@drawable/mic"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.497"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.558" />
+
+<EditText
+    android:id="@+id/editText"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="100dp"
+    android:text="Press mic button to input voice..."
+    android:textColor="@color/black"
+    android:textSize="20dp"
+    app:layout_constraintBottom_toTopOf="@+id/tv_answer"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.495"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/textView3"
+    app:layout_constraintVertical_bias="0.17" />
+
+<TextView
+    android:id="@+id/tv_answer"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="236dp"
+    android:text="답변"
+    android:textColor="@color/black"
+    android:textSize="20dp"
+    app:layout_constraintBottom_toTopOf="@+id/btn_stt_start"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.498"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.25" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+```
+- MainActivity.java 코드
+``` android
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+
+import android.Manifest;
+import static android.speech.tts.TextToSpeech.ERROR;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.speech.RecognitionListener;
+import android.speech.RecognizerIntent;
+import android.speech.SpeechRecognizer;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.Locale;
+
+public class MainActivity extends AppCompatActivity {
+
+    Intent intent;
+    String text_to_speak;
+    final int PERMISSION = 1;
+    private TextToSpeech tts;
+    SpeechRecognizer mRecognizer;
+
+    private Button btn_stt_start;
+    private TextView tv_answer;
+    private EditText editText;
+
+    private FirebaseDatabase mDatabase;
+    private ChildEventListener mChild;
+    private DatabaseReference mReference, testReference;
+    public String msg;
+    Handler handler = new Handler();
+    int i;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // 데이터 베이스 감시
+        initDatabase();
+
+        btn_stt_start = findViewById(R.id.btn_stt_start);
+        editText = findViewById(R.id.editText);
+        tv_answer = findViewById(R.id.tv_answer);
+
+        // 안드로이드 6.0버전 이상인지 체크해서 퍼미션 체크
+        if(Build.VERSION.SDK_INT >= 23){
+            ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.INTERNET,
+                    Manifest.permission.RECORD_AUDIO},PERMISSION);
+        }
+
+        // RecognizerIntent 생성
+        intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_CALLING_PACKAGE,getPackageName()); // 여분의 키
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE,"ko-KR"); // 언어 설정
+
+        // 버튼 클릭 시 객체에 Context와 listener를 할당
+        btn_stt_start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 음성 -> 텍스트 변환
+                mRecognizer = SpeechRecognizer.createSpeechRecognizer(MainActivity.this); // 새 SpeechRecognizer 를 만드는 팩토리 메서드
+                mRecognizer.setRecognitionListener(listener); // 리스너 설정
+                mRecognizer.startListening(intent); // 듣기 시작
+            }
+        });
+
+    }
+
+    private RecognitionListener listener = new RecognitionListener() {
+        @Override
+        public void onReadyForSpeech(Bundle params) {
+            // 말하기 시작할 준비가되면 호출
+            Toast.makeText(getApplicationContext(),"음성인식 시작",Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        public void onBeginningOfSpeech() {
+            // 말하기 시작했을 때 호출
+        }
+
+        @Override
+        public void onRmsChanged(float rmsdB) {
+            // 입력받는 소리의 크기를 알려줌
+        }
+
+        @Override
+        public void onBufferReceived(byte[] buffer) {
+            // 말을 시작하고 인식이 된 단어를 buffer에 담음
+        }
+
+        @Override
+        public void onEndOfSpeech() {
+            // 말하기를 중지하면 호출
+        }
+
+        @Override
+        public void onError(int error) {
+            // 네트워크 또는 인식 오류가 발생했을 때 호출
+            String message;
+
+            switch (error) {
+                case SpeechRecognizer.ERROR_AUDIO:
+                    message = "오디오 에러";
+                    break;
+                case SpeechRecognizer.ERROR_CLIENT:
+                    message = "클라이언트 에러";
+                    break;
+                case SpeechRecognizer.ERROR_INSUFFICIENT_PERMISSIONS:
+                    message = "퍼미션 없음";
+                    break;
+                case SpeechRecognizer.ERROR_NETWORK:
+                    message = "네트워크 에러";
+                    break;
+                case SpeechRecognizer.ERROR_NETWORK_TIMEOUT:
+                    message = "네트웍 타임아웃";
+                    break;
+                case SpeechRecognizer.ERROR_NO_MATCH:
+                    message = "찾을 수 없음";
+                    break;
+                case SpeechRecognizer.ERROR_RECOGNIZER_BUSY:
+                    message = "RECOGNIZER 가 바쁨";
+                    break;
+                case SpeechRecognizer.ERROR_SERVER:
+                    message = "서버가 이상함";
+                    break;
+                case SpeechRecognizer.ERROR_SPEECH_TIMEOUT:
+                    message = "말하는 시간초과";
+                    break;
+                default:
+                    message = "알 수 없는 오류";
+                    break;
+            }
+
+            Toast.makeText(getApplicationContext(), "에러 발생 : " + message,Toast.LENGTH_SHORT).show();
+        }
+        // 음성 인식 후 처리 함수
+        @Override
+        public void onResults(Bundle results) {
+            // 인식 결과가 준비되면 호출
+            // 말을 하면 ArrayList에 단어를 넣고 textView에 단어를 이어줌
+            ArrayList<String> matches =
+                    results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
+
+            for(int i = 0; i < matches.size() ; i++){
+                editText.setText(matches.get(i));
+            }
+            msg = editText.getText().toString();
+            mReference.child("question").setValue(msg);
+
+            testReference = mDatabase.getReference("state"); // test
+            testReference.child("log").setValue("chek");
+
+            // 딜레이
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // 데이터 불러오기
+                    mReference = mDatabase.getReference("log"); // 변경값을 확인할 child 이름
+
+                    mReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot messageData : dataSnapshot.getChildren()) {
+                                // child 내에 있는 데이터만큼 반복해서 변화한 데이터 찾기
+                                String msg2 = messageData.getValue().toString();
+                                tv_answer.setText(msg2);
+                            }
+                            // 다 끝나면 음성으로 출력
+                            speak(tv_answer.getText().toString());
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                    //딜레이 후 시작할 코드 작성
+                }
+            }, 1500);// 1.5초 정도 딜레이
+
+        }
+
+        @Override
+        public void onPartialResults(Bundle partialResults) {
+            // 부분 인식 결과를 사용할 수 있을 때 호출
+        }
+
+        @Override
+        public void onEvent(int eventType, Bundle params) {
+            // 향후 이벤트를 추가하기 위해 예약
+        }
+    };
+    // 음성 출력 함수
+    private void speak(String text) {
+        tts = new TextToSpeech(getApplicationContext(), new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status != ERROR) {
+                    int result = tts.setLanguage(Locale.KOREA); // 언어 선택
+                    if (result == TextToSpeech.LANG_NOT_SUPPORTED || result == TextToSpeech.LANG_MISSING_DATA) {
+                        Log.e("TTS", "This Language is not supported");
+                    } else {
+                        tts.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+                    }
+                } else {
+                    Log.e("TTS", "Initialization Failed!");
+                }
+            }
+        });
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(tts!=null){ // 사용한 TTS객체 제거
+            tts.stop();
+            tts.shutdown();
+        }
+        super.onDestroy();
+        mReference.removeEventListener(mChild);
+    }
+    // 데이터 변화 감지 함수들
+    private void initDatabase() {
+
+        mDatabase = FirebaseDatabase.getInstance();
+
+        mReference = mDatabase.getReference("log");
+        mReference.child("log").setValue("check");
+
+        mChild = new ChildEventListener() {
+
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        };
+        mReference.addChildEventListener(mChild);
+    }
+
+
+}
+```
 
 ## 프로젝트 수행 절차 - 챗봇
 #### (1) 챗봇을 사용한 이유
@@ -45,9 +396,7 @@
 
 #### (4) 챗봇 학습 진행
 - 제가 사용한 모델은 transformers의 bert입니다.
-``` python
-model = SentenceTransformer('sentence-transformers/xlm-r-100langs-bert-base-nli-stsb-mean-tokens')
-```
+
 - 저장한 챗봇 데이터 프레임에 임베딩 값을 구한 후 코사인 유사도를 구합니다.
 <img width="100%" src="https://user-images.githubusercontent.com/84302953/165212133-f03b723b-d3e9-443d-9a0e-6c6d266dd420.png"/>
 
