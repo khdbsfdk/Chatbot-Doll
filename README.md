@@ -388,7 +388,7 @@ public class MainActivity extends AppCompatActivity {
 - 본 프로젝트는 **일상 대화**에 중점을 두었고, 대화용 챗봇을 목적으로 합니다.
 - 추가로 음성으로 대화하는 챗봇입니다.
 ### (3) 챗봇 데이터
-- [챗봇 데이터를 송영숙님 데이터에서 가져왔습니다.](https://github.com/songys/Chatbot_data)
+- [송영숙님의 위로 챗봇 데이터에서 가져왔습니다.](https://github.com/songys/Chatbot_data)
 
 ### (4) 챗봇 학습 진행
 - 제가 사용한 모델은 transformers의 bert입니다.
