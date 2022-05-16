@@ -421,6 +421,41 @@ firebase_admin.initialize_app(cred,{
     'databaseURL' : 'https://chat-db-32cde-default-rtdb.firebaseio.com/'
 })
 ```
+- 파이어 베이스에서 데이터를 읽고 쓰는 방법입니다.
+``` python
+# 데이터 읽기
+dir2 = db.reference('state/log')
+print(dir2.get())
+# 데이터 쓰기
+dir = db.reference('log')
+dir.update({'log':'None'})
+dir.update({'question':result_text})
+```
+- 이제 반복문을 사용하여 안드로이드에서 데이터를 저장하면 챗봇이 답변하게 만들어줍니다.
+``` python
+while 1:
+    #계속 데이터 읽기
+    ref = db.reference('log/question')
+    ref2 = db.reference('state/log')
+    dir = db.reference('log')
+    dir2 = db.reference('state')
+
+    #ref.get()는 #json형태로 받아옴
+    if ref.get() == 'stop':
+        break
+    # 무한 반복 중에서도 원할 때만 값 변경 하기
+    elif ref2.get() != "None":
+        score, result_text, label = return_answer(ref.get())
+
+        if score >= 30:
+            print(result_text)
+            print("score : ", score)
+            dir.update({'question':result_text})
+            dir2.update({'log':'None'})
+        else:
+            print("잘 못 알아들었어요.")
+            dir2.update({'log':'None'})
+```
 - 따라서 크롤링 시 명소 이름, 주소, 테마를 저장합니다.
 <img width="100%" src="https://user-images.githubusercontent.com/84302953/165223874-3300f74a-3b2c-4ecc-b71e-af272a61012c.png"/>
 
