@@ -394,7 +394,7 @@ public class MainActivity extends AppCompatActivity {
 ### (4) 챗봇 학습 진행
 - 제가 사용한 모델은 transformers의 bert입니다.
 
-- 저장한 챗봇 데이터 프레임에 임베딩 값을 구한 후 코사인 유사도를 구합니다.
+- 저장한 챗봇 데이터 프레임에 임베딩 값을 구한 후 [코사인 유사도](https://bkshin.tistory.com/entry/NLP-8-%EB%AC%B8%EC%84%9C-%EC%9C%A0%EC%82%AC%EB%8F%84-%EC%B8%A1%EC%A0%95-%EC%BD%94%EC%82%AC%EC%9D%B8-%EC%9C%A0%EC%82%AC%EB%8F%84)를 구합니다.
 <img width="100%" src="https://user-images.githubusercontent.com/84302953/168531538-f7e8360a-67f3-4ee5-93fb-feca2cfdb0d9.png"/>
 
 - 질문 문장을 넣으면 데이터 프레임 중 가장 유사한 질문 문장을 찾아 답변합니다.
