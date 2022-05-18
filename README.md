@@ -26,6 +26,8 @@
 ---
 # 프로젝트 수행 절차 - 안드로이드
 - 안드로이드 스튜디오를 사용하여 앱을 구현했습니다. STT와 TTS 모두를 사용하며, 버튼 하나로 작동합니다.
+<img width="30%" src="https://user-images.githubusercontent.com/84302953/168939228-1e96e523-18b6-4761-967c-f65884007051.png"/>
+
 - activity_main.xml 코드
 ``` android
 <?xml version="1.0" encoding="utf-8"?>
@@ -456,6 +458,8 @@ while 1:
             print("잘 못 알아들었어요.")
             dir2.update({'log':'None'})
 ```
+
+<img width="50%" src="https://user-images.githubusercontent.com/84302953/168939761-5d0a0cef-d83d-42d5-9143-13b6810c63db.png"/>
 
 # 개선 할 사항
 - 이전 대화 문맥 파악 및 정확도 개선
