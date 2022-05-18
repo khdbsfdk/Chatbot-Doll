@@ -26,7 +26,7 @@
 ---
 # 프로젝트 수행 절차 - 안드로이드
 - 안드로이드 스튜디오를 사용하여 앱을 구현했습니다. STT와 TTS 모두를 사용하며, 버튼 하나로 작동합니다.
-<img width="30%" src="https://user-images.githubusercontent.com/84302953/168939228-1e96e523-18b6-4761-967c-f65884007051.png"/>
+<img width="30%" src="https://user-images.githubusercontent.com/84302953/168940011-043a82f1-67b0-4c6e-929a-5b6b6084900d.png"/>
 
 - activity_main.xml 코드
 ``` android
