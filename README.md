@@ -459,7 +459,7 @@ while 1:
             dir2.update({'log':'None'})
 ```
 
-<img width="50%" src="https://user-images.githubusercontent.com/84302953/168939761-5d0a0cef-d83d-42d5-9143-13b6810c63db.png"/>
+<img width="40%" src="https://user-images.githubusercontent.com/84302953/168939761-5d0a0cef-d83d-42d5-9143-13b6810c63db.png"/>
 
 # 개선 할 사항
 - 이전 대화 문맥 파악 및 정확도 개선
