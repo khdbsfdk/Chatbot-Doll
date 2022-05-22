@@ -456,6 +456,7 @@ while 1:
             dir2.update({'log':'None'})
         else:
             print("잘 못 알아들었어요.")
+            dir.update({'question':"잘 못 알아들었어요."})
             dir2.update({'log':'None'})
 ```
 
